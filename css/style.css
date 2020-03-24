@@ -15,6 +15,12 @@ h1 {
   margin-left: 20px;
 }
 
+#showKnown {
+  position: absolute;
+  right: 50px;
+  top: 20px;
+}
+
 h2 {
   margin-top: 0;
 }
