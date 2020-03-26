@@ -50,7 +50,10 @@ function addButtonToggles()
   //selects the "i know it" button. add EL that hides the flashcard when clicked
   let lastCardKnowButton = lastCard.getElementsByTagName('button')[1];
   lastCardKnowButton.addEventListener('click', function(){
-    lastCard.classList.toggle('hide');
+    lastCard.classList.add('fade-out');
+    setTimeout(function(){
+      lastCard.classList.add('hide');
+    }, 800);
   });
 }
 
@@ -63,7 +66,7 @@ $('add').addEventListener('click', function(){
   //checks that there is input in the field. else do nothing
   if (newQuestion.length > 0 && newAnswer.length > 0) {
     //creates HTML for new flashcard
-    let newCard = '<div class="flashcard"><h3>' + newQuestion + '</h3><p class="hide">' + newAnswer + '</p><button type="button" id="show" onclick="">Show/Hide Answer</button><br><button type="button" id="know">I know it</button></div>'
+    let newCard = '<div class="flashcard fade-in"><h3>' + newQuestion + '</h3><p class="hide">' + newAnswer + '</p><button type="button" id="show" onclick="">Show/Hide Answer</button><br><button type="button" id="know">I know it</button></div>'
     //inserts new HTML into the end of the body
     $('body').insertAdjacentHTML('beforeend', newCard);
     //runs function the adds event listeners to the buttons on the new flashcard
@@ -80,6 +83,7 @@ $('showKnown').addEventListener('click', function(){
   //makes all flashcards visible again
   for (i = 0; i < flashcards.length; i++){
     flashcards[i].classList.remove('hide');
+    flashcards[i].classList.remove('fade-out');
   };
 });
 
